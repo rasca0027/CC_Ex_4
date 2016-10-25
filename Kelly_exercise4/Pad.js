@@ -9,4 +9,14 @@ function Pad(x1, y1, x2, y2) {
     stroke(0);
     line(this.x1, this.y1, this.x2, this.y2);
   }
+  
+  this.get_length = function() {
+    return sqrt( (x2-x1)*(x2-x1) + (y2-y1)*(y2-y1));
+  }
+  
+  this.vec = function() {
+    var vec = createVector(this.x2 - this.x1, this.y2 - this.y1);
+    return vec;
+  }
+  
 }

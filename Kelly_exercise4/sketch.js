@@ -5,7 +5,7 @@ var startx, starty, endx, endy;
 
 function setup() {
   createCanvas(600, 600);
-  frameRate(15);
+  frameRate(5);
 }
 
 function draw() {
@@ -15,12 +15,18 @@ function draw() {
   // show all the bricks
   for (var i = 0; i < bricks.length; i++) {
     bricks[i].update();
-  }
+    for (var j =0; j < pads.length; j++) {
+      var angle = bricks[i].check_collide(pads[j]);
+      //console.log(angle);
+      
+    }
+  }  
 
   // show all the pads
   for (var i = 0; i < pads.length; i++) {
     pads[i].display();
   }
+
 
   if (keyIsPressed) {
     if (keyCode == 32) {
@@ -37,7 +43,6 @@ function mouseClicked() {
     a.display();
     bricks.push(a);
   } else { // creating pads
-    console.log('pad');
     stroke(0);
     var b = new Pad(startx, starty, endx, endy);
     b.display();
