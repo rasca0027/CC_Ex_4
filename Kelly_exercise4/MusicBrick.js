@@ -67,16 +67,13 @@ function MusicBrick(x, y) {
     var v2 = createVector(this.x - pad.x1, this.y - pad.y1);
     var angle = p5.Vector.angleBetween(v1, v2);
     
-    if (angle <= 0.2) {
-      console.log('collide');
+    if ((angle <= 0.2) && (this.x - 20 < pad.x2 )){
+      //console.log('collide');
       this.stop = true;
     }
     return angle;
     
-  
-    
   }
-  
   
   
 }

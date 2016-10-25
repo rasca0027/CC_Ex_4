@@ -4,20 +4,21 @@ var mode = true; // mode true for creating bricks, false for creating pads
 var startx, starty, endx, endy;
 
 function setup() {
-  createCanvas(600, 600);
+  createCanvas(800, 600);
   frameRate(15);
 }
 
 function draw() {
   background(255);
   fill(0);
-  textSize(20);
+  textSize(18);
   
   // show mode on screen
+  strokeWeight(1);
   if (mode) {
-    text("mode: Bricks", 50, 50);
+    text("Mode: Bricks", 50, 50);
   } else {
-    text("mode: Draw", 50, 50);
+    text("Mode: Draw", 50, 50);
   }
   
 
