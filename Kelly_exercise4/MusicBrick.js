@@ -14,7 +14,8 @@ function MusicBrick(x, y) {
     fill(this.x, 60, 150);
     //fill(random(255), 60, 150);
     rect(this.x, this.y, 40, 40);
-    //this.osc.start();
+    this.osc.freq(this.x+this.y);
+    this.osc.start();
   }
   
   this.update = function() {
@@ -24,14 +25,16 @@ function MusicBrick(x, y) {
     fill(map(this.x, 0, 600, 0, 255), 60, 150);
     //console.log('drop!');
     
-
-    // gravity
+    // drops down
     if (!this.stop) {
       this.y += this.speed * (this.y);
        if (this.y >= 580) {
         this.y = 580;
+        this.stop = true;
       }
-    } 
+    } else {
+      this.osc.stop();
+    }
     
     // finally draw it
     rect(this.x, this.y, 40, 40);
@@ -41,7 +44,7 @@ function MusicBrick(x, y) {
   this.check_collide = function(pad) {
     
     
-    /* kind of give up ........... try an easier way......
+    /* kind of give up ........... gonna try an easier way......
     // calculate if the brick is colliding with the pad
     var vec_ab = pad.vec();
     var vec_ap = createVector(this.x - pad.x1, this.y - pad.y1);
@@ -64,7 +67,7 @@ function MusicBrick(x, y) {
     var v2 = createVector(this.x - pad.x1, this.y - pad.y1);
     var angle = p5.Vector.angleBetween(v1, v2);
     
-    if (angle <= 0.1) {
+    if (angle <= 0.2) {
       console.log('collide');
       this.stop = true;
     }

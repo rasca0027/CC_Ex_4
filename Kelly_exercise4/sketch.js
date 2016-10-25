@@ -5,11 +5,20 @@ var startx, starty, endx, endy;
 
 function setup() {
   createCanvas(600, 600);
-  frameRate(5);
+  frameRate(15);
 }
 
 function draw() {
   background(255);
+  fill(0);
+  textSize(20);
+  
+  // show mode on screen
+  if (mode) {
+    text("mode: Bricks", 50, 50);
+  } else {
+    text("mode: Draw", 50, 50);
+  }
   
 
   // show all the bricks
@@ -29,7 +38,7 @@ function draw() {
 
 
   if (keyIsPressed) {
-    if (keyCode == 32) {
+    if (keyCode == SHIFT) {
       mode = !mode;
       console.log('mode changed');
     }
